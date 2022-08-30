@@ -1,8 +1,8 @@
 <?
     if(!empty($_GET)){
-        $name = $_GET['name'];
-        $mail = $_GET['mail'];
-        $age = $_GET['age'];
+        $name = $_GET['name'] ?? '';
+        $mail = $_GET['mail'] ?? '';
+        $age = $_GET['age'] ?? '';
     }
 ?>
 <!DOCTYPE html>
@@ -14,41 +14,39 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>SCRIVI I TUOI DATI DI ACCESSO:</h2>
-    <form action="" method="GET">
-        <div>
-            
-            <label for="name">Nome</label>
-            <input type="text" id="name" name="name" >
-        </div>    
-        <br>
-        <div>
-            <label for="mail">Email</label>
-            <input type="text" id="mail" name="mail">
-        </div>
-        <br>
-        <div>
-            <label for="age">Anni</label>
-            <input type="number" id="age" name="age">
-        </div>
-            <button type="submit">INVIA</button>
-        </div>
-    </form>
-
-    <div>
-         <?php
-        if(isset($name,$mail,$age))
+    <?php
+        if(!isset($name,$mail,$age))
            : ?>
-           <h2>ACCESSO RIUSCITO</h2>
-            <h4>benvenuto <?= $name ?> </h4>
-    </div>
-    <div>
-    
-    <h2>
-    <?php else : ?>
-    ACCESSO NEGATO
-    <?php endif ; ?>
-    </h2>
-
+          scrivi i tuoi dati come solo te sai fare bomber!
+           <div>
+            <?php elseif(strlen($name) < 3) : ?>
+                <h4>ACCESSO NEGATO</h4>
+           </div>
+           
+            <div>
+                <h3>
+                <?php elseif(!is_numeric($age)) : ?>
+                    <h2>ACCESSO NEGATO </h2>
+                </h3>
+            </div>
+            <div>
+                <h3>
+                <?php elseif(!strpos($mail,'@')) : ?>
+                    <h2>ACCESSO NEGATO</h2>
+                </h3>
+            </div>
+            <div>
+                <h3>
+                <?php elseif(!strpos($mail,'.')) : ?>
+                    <h2>ACCESSO NEGATO</h2>
+                </h3>
+            </div>
+            <div>
+                <h3>
+                <?php else : ?>
+                    <h2>ACCESSO RIUSCITO</h2>
+                </h3>
+            </div>
+            <?php endif; ?>
 </body>
 </html>
