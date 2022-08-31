@@ -39,25 +39,11 @@ $posts = [
         ]
     ],
 ];
+$post_date = array_keys($posts);
+for($i=0;$i<count($post_date);$i++){
+    $key_post = $post_date[$i];
+    var_dump($posts[$key_post]);
+   
+}
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <ul>
-    <?php for( $i=0 ; $i < count($posts) ; $i++ ) :?>
-        <li>
-            <?php for($j=0; $j<count($posts[$i]) ;$i++) :?>
-                <h4><?php $posts[$i][$j] ?></h4>
-                
-        </li>
-        <?php endfor; ?>
-        <?php endfor; ?>
-    </ul>
-</body>
-</html>

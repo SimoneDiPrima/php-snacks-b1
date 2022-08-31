@@ -31,7 +31,7 @@
             </div>
             <div>
                 <h3>
-                <?php elseif(!strpos($mail,'@')) : ?>
+                <?php elseif(!strpos($mail,'@') ) : ?>
                     <h2>ACCESSO NEGATO</h2>
                 </h3>
             </div>
